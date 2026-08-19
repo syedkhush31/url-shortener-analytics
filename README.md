@@ -1,6 +1,6 @@
 # 🔗 URL Shortener & Analytics Dashboard
 
-A full-stack URL shortening application with custom aliases, click tracking, search, sorting, and a modern analytics dashboard.
+A full-stack URL shortening application that lets users create short URLs, use custom aliases, track click counts, and manage links through a modern analytics dashboard.
 
 Built with **React, Node.js, Express.js, and MySQL**.
 
@@ -8,52 +8,68 @@ Built with **React, Node.js, Express.js, and MySQL**.
 
 ## 🚀 Overview
 
-This project allows users to:
+The application provides a simple interface for creating and managing shortened URLs.
+
+Users can:
 
 - Create short URLs from long URLs
-- Optionally create custom aliases
-- Redirect users through short URLs
+- Generate random short codes
+- Create custom aliases such as `/github` or `/portfolio`
+- Redirect users through shortened URLs
 - Track click counts
-- View all created links in a dashboard
-- Search and sort links
-- Copy short URLs
-- Delete links
-- Automatically refresh analytics when returning to the dashboard
+- Identify the most-clicked link
+- Search and sort saved links
+- Copy short URLs to the clipboard
+- Delete shortened URLs
+- Automatically refresh dashboard data when returning to the application
 
-The application follows a modular frontend/backend architecture with a MySQL database and RESTful APIs.
+The project follows a modular full-stack architecture with a React frontend, Express/Node.js backend, REST APIs, and a MySQL database.
 
 ---
 
 ## ✨ Features
 
 ### URL Shortening
-- Generate collision-resistant short codes using `nanoid`
-- Create custom aliases such as `/github` or `/portfolio`
+
+- Generate short codes using `nanoid`
+- Create custom aliases
 - Validate submitted URLs
-- Prevent duplicate custom aliases
+- Validate custom alias format
+- Enforce custom alias length limits
+- Prevent duplicate aliases and short codes
+- Handle extremely unlikely short-code collisions
+- Redirect short URLs to their original destinations
 
 ### Analytics
-- Track total URLs
-- Track total clicks
-- Identify the most-clicked link
-- Track clicks for individual short URLs
-- Automatically refresh dashboard data when the user returns to the application
+
+- Total number of shortened URLs
+- Total click count
+- Most-clicked link
+- Individual click counts for each shortened URL
+- Dashboard statistics
+- Automatic data refresh when returning to the application
 
 ### Link Management
-- Search by original URL or short code
+
+- Search links by original URL
+- Search links by short code
 - Sort by newest
 - Sort by oldest
-- Sort by clicks
+- Sort by number of clicks
 - Copy short URLs to clipboard
 - Delete shortened URLs
+- Display creation date
+- Display click counts
 
 ### User Experience
-- Toast notifications
+
+- Modern dark-themed interface
+- Responsive layout
 - Loading states
 - Empty states
-- Responsive dashboard
-- Modern dark UI
+- Toast notifications
 - Custom alias input
+- Interactive dashboard
 - Mobile-friendly layout
 
 ---
@@ -64,8 +80,10 @@ The application follows a modular frontend/backend architecture with a MySQL dat
 
 - React
 - Axios
-- CSS3
 - React Hot Toast
+- React Icons
+- React Router
+- CSS3
 - Vite
 
 ### Backend
@@ -73,6 +91,7 @@ The application follows a modular frontend/backend architecture with a MySQL dat
 - Node.js
 - Express.js
 - Nanoid
+- CORS
 
 ### Database
 
@@ -90,28 +109,41 @@ The application follows a modular frontend/backend architecture with a MySQL dat
 ## 🏗 Architecture
 
 ```text
-                    ┌──────────────────────┐
-                    │      React App       │
-                    │                      │
-                    │  Dashboard / Forms   │
-                    │  Search / Analytics  │
-                    └──────────┬───────────┘
-                               │
-                               │ REST API
-                               ▼
-                    ┌──────────────────────┐
-                    │   Express / Node.js  │
-                    │                      │
-                    │ URL creation         │
-                    │ Redirect handling    │
-                    │ Click tracking       │
-                    │ Validation           │
-                    └──────────┬───────────┘
-                               │
-                               │ SQL
-                               ▼
-                    ┌──────────────────────┐
-                    │        MySQL         │
-                    │                      │
-                    │      urls table      │
-                    └──────────────────────┘
+┌─────────────────────────────┐
+│        React Frontend       │
+│                             │
+│  URL Form                   │
+│  Dashboard                  │
+│  Search & Sorting           │
+│  Link Management            │
+│  Statistics                 │
+└──────────────┬──────────────┘
+               │
+               │ REST API / HTTP
+               ▼
+┌─────────────────────────────┐
+│      Express / Node.js      │
+│                             │
+│  URL Creation               │
+│  URL Validation             │
+│  Short Code Generation      │
+│  Redirect Handling          │
+│  Click Counting             │
+│  Link Deletion              │
+└──────────────┬──────────────┘
+               │
+               │ SQL
+               ▼
+┌─────────────────────────────┐
+│           MySQL             │
+│                             │
+│           urls              │
+│  ┌───────────────────────┐  │
+│  │ id                    │  │
+│  │ original_url           │  │
+│  │ short_code             │  │
+│  │ custom_alias           │  │
+│  │ clicks                 │  │
+│  │ created_at             │  │
+│  └───────────────────────┘  │
+└─────────────────────────────┘
