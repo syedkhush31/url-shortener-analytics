@@ -1,51 +1,84 @@
-# URL Shortener with Analytics
+# 🔗 URL Shortener & Analytics Dashboard
 
-A production-style URL Shortener with Analytics built using **React**, **Node.js**, **Express.js**, and **MySQL**.
+A full-stack URL shortening application with custom aliases, click tracking, search, sorting, and a modern analytics dashboard.
 
----
-
-## Project Overview
-
-This application allows users to shorten long URLs and track basic analytics for every visit.
-
-The project is designed as a beginner-friendly full-stack application while following professional software engineering practices such as modular architecture, REST APIs, database normalization, documentation, testing, and version control.
+Built with **React, Node.js, Express.js, and MySQL**.
 
 ---
 
-## Features
+## 🚀 Overview
 
-- Generate short URLs
-- Redirect using short URLs
-- View all shortened URLs
-- Track click analytics
-- Browser detection
-- Device detection
-- Referrer tracking
-- Dashboard
-- Input validation
-- Error handling
-- Rate limiting
+This project allows users to:
+
+- Create short URLs from long URLs
+- Optionally create custom aliases
+- Redirect users through short URLs
+- Track click counts
+- View all created links in a dashboard
+- Search and sort links
+- Copy short URLs
+- Delete links
+- Automatically refresh analytics when returning to the dashboard
+
+The application follows a modular frontend/backend architecture with a MySQL database and RESTful APIs.
 
 ---
 
-## Tech Stack
+## ✨ Features
+
+### URL Shortening
+- Generate collision-resistant short codes using `nanoid`
+- Create custom aliases such as `/github` or `/portfolio`
+- Validate submitted URLs
+- Prevent duplicate custom aliases
+
+### Analytics
+- Track total URLs
+- Track total clicks
+- Identify the most-clicked link
+- Track clicks for individual short URLs
+- Automatically refresh dashboard data when the user returns to the application
+
+### Link Management
+- Search by original URL or short code
+- Sort by newest
+- Sort by oldest
+- Sort by clicks
+- Copy short URLs to clipboard
+- Delete shortened URLs
+
+### User Experience
+- Toast notifications
+- Loading states
+- Empty states
+- Responsive dashboard
+- Modern dark UI
+- Custom alias input
+- Mobile-friendly layout
+
+---
+
+## 🛠 Tech Stack
 
 ### Frontend
 
-- React.js
+- React
 - Axios
 - CSS3
+- React Hot Toast
+- Vite
 
 ### Backend
 
 - Node.js
 - Express.js
+- Nanoid
 
 ### Database
 
 - MySQL
 
-### Tools
+### Development Tools
 
 - Git
 - GitHub
@@ -54,125 +87,31 @@ The project is designed as a beginner-friendly full-stack application while foll
 
 ---
 
-## Project Structure
+## 🏗 Architecture
 
-```
-
-URL-Shortener/
-
-├── assets/
-├── client/
-├── server/
-├── database/
-├── docs/
-├── screenshots/
-├── README.md
-├── LICENSE
-├── PROJECT_ROADMAP.md
-└── .gitignore
-
-```
-
----
-
-## Documentation
-
-Project documentation is available in the **docs** directory.
-
-- Software Requirements Specification
-- System Design
-- Database Design
-- API Design
-- UI/UX Design
-- Testing Plan
-- Development Log
-
----
-
-## Installation
-
-### Clone Repository
-
-```bash
-git clone https://github.com/syedkhush31/url-shortener-analytics.git
-```
-
----
-
-### Backend
-
-```bash
-cd server
-npm install
-npm run dev
-```
-
----
-
-### Frontend
-
-```bash
-cd client
-npm install
-npm run dev
-```
-
----
-
-## API Endpoints
-
-| Method | Endpoint                  | Description      |
-| ------ | ------------------------- | ---------------- |
-| POST   | /api/urls                 | Create Short URL |
-| GET    | /api/urls                 | Get All URLs     |
-| GET    | /:shortCode               | Redirect         |
-| GET    | /api/analytics/:shortCode | View Analytics   |
-
----
-
-## Screenshots
-
-Screenshots will be added after implementation.
-
----
-
-## Learning Objectives
-
-This project demonstrates:
-
-- React Fundamentals
-- Express.js
-- REST APIs
-- MySQL
-- Database Design
-- Backend Development
-- Frontend Development
-- API Testing
-- Version Control
-
----
-
-## Future Improvements
-
-Potential future enhancements include:
-
-- User Authentication
-- Custom Short URLs
-- QR Code Generation
-- Link Expiration
-- Link Editing
-- Link Deletion
-
----
-
-## Author
-
-**Syed Khush**
-
-GitHub: https://github.com/syedkhush31
-
----
-
-## License
-
-This project is licensed under the MIT License.
+```text
+                    ┌──────────────────────┐
+                    │      React App       │
+                    │                      │
+                    │  Dashboard / Forms   │
+                    │  Search / Analytics  │
+                    └──────────┬───────────┘
+                               │
+                               │ REST API
+                               ▼
+                    ┌──────────────────────┐
+                    │   Express / Node.js  │
+                    │                      │
+                    │ URL creation         │
+                    │ Redirect handling    │
+                    │ Click tracking       │
+                    │ Validation           │
+                    └──────────┬───────────┘
+                               │
+                               │ SQL
+                               ▼
+                    ┌──────────────────────┐
+                    │        MySQL         │
+                    │                      │
+                    │      urls table      │
+                    └──────────────────────┘
