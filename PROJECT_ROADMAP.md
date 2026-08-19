@@ -3,17 +3,19 @@
 **Project:** URL Shortener with Analytics  
 **Version:** 1.0.0  
 **Author:** Syed Khush  
-**Status:** In Development  
+**Status:** Completed  
 **Document:** Project Roadmap  
-**Last Updated:** July 2026
+**Last Updated:** August 2026
 
 ---
 
 # Project Overview
 
-This roadmap outlines the complete development plan for the URL Shortener with Analytics project.
+This roadmap documents the development of the URL Shortener with Analytics project.
 
-Each milestone represents a major phase of development and will be completed sequentially.
+The project was developed as a full-stack web application using React, Node.js, Express.js, and MySQL.
+
+The application allows users to create short URLs, optionally define custom aliases, redirect through short URLs, track clicks, and manage created links through a dashboard.
 
 ---
 
@@ -25,8 +27,12 @@ Each milestone represents a major phase of development and will be completed seq
 
 - Setup development environment
 - Create GitHub repository
-- Create project structure
-- Complete project documentation
+- Define project requirements
+- Design system architecture
+- Design database
+- Design API
+- Plan UI/UX
+- Define testing approach
 
 ### Tasks
 
@@ -49,17 +55,18 @@ Each milestone represents a major phase of development and will be completed seq
 
 ### Objectives
 
-Build the backend foundation.
+Build the backend foundation using Node.js and Express.js.
 
 ### Tasks
 
-- [ ] Initialize Node.js project
-- [ ] Install dependencies
-- [ ] Create Express server
-- [ ] Configure project structure
-- [ ] Test server
+- [x] Initialize Node.js project
+- [x] Install dependencies
+- [x] Create Express server
+- [x] Configure project structure
+- [x] Configure environment variables
+- [x] Test server
 
-**Status:** ⬜ Pending
+**Status:** ✅ Completed
 
 ---
 
@@ -67,16 +74,28 @@ Build the backend foundation.
 
 ### Objectives
 
-Connect MySQL and create database tables.
+Connect MySQL and create the database structure required by the application.
 
 ### Tasks
 
-- [ ] Configure MySQL connection
-- [ ] Create URLs table
-- [ ] Create Clicks table
-- [ ] Test database connection
+- [x] Configure MySQL connection
+- [x] Create `url_shortener_db` database
+- [x] Create `urls` table
+- [x] Configure database queries
+- [x] Test database connection
 
-**Status:** ⬜ Pending
+### Current URLs Table
+
+The `urls` table contains:
+
+- `id`
+- `original_url`
+- `short_code`
+- `custom_alias`
+- `clicks`
+- `created_at`
+
+**Status:** ✅ Completed
 
 ---
 
@@ -84,16 +103,20 @@ Connect MySQL and create database tables.
 
 ### Objectives
 
-Develop the API to shorten URLs.
+Develop the API responsible for creating and managing shortened URLs.
 
 ### Tasks
 
-- [ ] Create POST /api/urls
-- [ ] Validate URLs
-- [ ] Generate short codes
-- [ ] Store URLs in database
+- [x] Create URL shortening endpoint
+- [x] Validate submitted URLs
+- [x] Generate unique short codes
+- [x] Support custom aliases
+- [x] Prevent duplicate aliases
+- [x] Store URLs in MySQL
+- [x] Return generated short URL
+- [x] Test API using Postman
 
-**Status:** ⬜ Pending
+**Status:** ✅ Completed
 
 ---
 
@@ -101,33 +124,43 @@ Develop the API to shorten URLs.
 
 ### Objectives
 
-Redirect users using short URLs.
+Allow users to access the original URL through a generated short URL or custom alias.
 
 ### Tasks
 
-- [ ] Search URL by short code
-- [ ] Redirect to original URL
-- [ ] Handle invalid short codes
+- [x] Search URL by short code
+- [x] Support custom aliases
+- [x] Redirect to original URL
+- [x] Increment click count
+- [x] Handle invalid short codes
+- [x] Test redirects through browser
 
-**Status:** ⬜ Pending
+**Status:** ✅ Completed
 
 ---
 
-## Sprint 5 — Analytics
+## Sprint 5 — Click Analytics
 
 ### Objectives
 
-Record click information.
+Track basic usage statistics for shortened URLs.
 
 ### Tasks
 
-- [ ] Store browser
-- [ ] Store device
-- [ ] Store referrer
-- [ ] Store click timestamp
-- [ ] Create analytics API
+- [x] Track click count
+- [x] Calculate total clicks
+- [x] Identify most-clicked link
+- [x] Display analytics on dashboard
+- [x] Verify click tracking
 
-**Status:** ⬜ Pending
+### Analytics Currently Available
+
+- Total links
+- Total clicks
+- Most-clicked link
+- Individual link click counts
+
+**Status:** ✅ Completed
 
 ---
 
@@ -135,17 +168,26 @@ Record click information.
 
 ### Objectives
 
-Develop the React application.
+Develop the React-based dashboard and integrate it with the backend API.
 
 ### Tasks
 
-- [ ] Home Page
-- [ ] Dashboard
-- [ ] Analytics Page
-- [ ] Error Page
-- [ ] API Integration
+- [x] Create main dashboard
+- [x] Create URL shortening form
+- [x] Add custom alias input
+- [x] Integrate backend APIs
+- [x] Display shortened URLs
+- [x] Display click statistics
+- [x] Add search
+- [x] Add sorting
+- [x] Add copy-to-clipboard functionality
+- [x] Add delete functionality
+- [x] Add loading states
+- [x] Add responsive UI
+- [x] Implement modern dashboard design
+- [x] Implement automatic dashboard refresh
 
-**Status:** ⬜ Pending
+**Status:** ✅ Completed
 
 ---
 
@@ -153,62 +195,130 @@ Develop the React application.
 
 ### Objectives
 
-Verify application functionality.
+Verify the application's functionality and fix issues discovered during development.
 
 ### Tasks
 
-- [ ] API Testing
-- [ ] Frontend Testing
-- [ ] Database Testing
-- [ ] Bug Fixes
+- [x] Test URL creation
+- [x] Test custom aliases
+- [x] Test duplicate aliases
+- [x] Test URL redirects
+- [x] Test click tracking
+- [x] Test dashboard statistics
+- [x] Test search
+- [x] Test sorting
+- [x] Test clipboard functionality
+- [x] Test URL deletion
+- [x] Test API using Postman
+- [x] Fix frontend refresh behaviour
+- [x] Fix dashboard statistics refresh behaviour
+- [x] Verify application in browser
 
-**Status:** ⬜ Pending
+**Status:** ✅ Completed
 
 ---
 
-## Sprint 8 — Deployment
+## Sprint 8 — GitHub & Finalization
 
 ### Objectives
 
-Prepare the project for GitHub.
+Prepare the project for public GitHub presentation.
 
 ### Tasks
 
-- [ ] Final Cleanup
-- [ ] Update Documentation
-- [ ] Upload Screenshots
-- [ ] Push Final Code
+- [x] Final code cleanup
+- [x] Configure `.gitignore`
+- [x] Verify environment files are excluded
+- [x] Commit project to Git
+- [x] Push project to GitHub
+- [x] Verify repository status
+- [x] Update README
+- [x] Prepare screenshots
+- [ ] Add final screenshots to repository
+- [ ] Deploy application
 
-**Status:** ⬜ Pending
+**Status:** 🟡 Mostly Completed
 
 ---
 
 # Progress Tracker
 
-| Sprint   | Status       |
-| -------- | ------------ |
-| Sprint 0 | ✅ Completed |
-| Sprint 1 | ⬜ Pending   |
-| Sprint 2 | ⬜ Pending   |
-| Sprint 3 | ⬜ Pending   |
-| Sprint 4 | ⬜ Pending   |
-| Sprint 5 | ⬜ Pending   |
-| Sprint 6 | ⬜ Pending   |
-| Sprint 7 | ⬜ Pending   |
-| Sprint 8 | ⬜ Pending   |
+| Sprint | Status |
+|---|---|
+| Sprint 0 — Project Planning | ✅ Completed |
+| Sprint 1 — Backend Setup | ✅ Completed |
+| Sprint 2 — Database | ✅ Completed |
+| Sprint 3 — URL Shortening API | ✅ Completed |
+| Sprint 4 — Redirect Feature | ✅ Completed |
+| Sprint 5 — Click Analytics | ✅ Completed |
+| Sprint 6 — Frontend | ✅ Completed |
+| Sprint 7 — Testing | ✅ Completed |
+| Sprint 8 — GitHub & Finalization | 🟡 Mostly Completed |
 
 ---
 
-# Current Focus
+# Current Project Status
 
-**Sprint 1 – Backend Setup**
+The core application is complete and has been tested locally.
+
+### Completed
+
+- Full-stack React application
+- Node.js/Express backend
+- MySQL database
+- URL shortening
+- Generated short codes
+- Custom aliases
+- URL redirection
+- Click tracking
+- Dashboard statistics
+- Search
+- Sorting
+- Clipboard functionality
+- Link deletion
+- Responsive UI
+- Postman API testing
+- Git/GitHub version control
+
+### Remaining
+
+- Add polished screenshots to GitHub
+- Deploy the application
+
+---
+
+# GitHub Repository
+
+The completed source code is available on GitHub:
+
+`https://github.com/syedkhush31/url-shortener-analytics`
+
+---
+
+# Future Improvements
+
+Potential future enhancements include:
+
+- User authentication and authorization
+- Advanced click analytics
+- Click timestamps
+- Referrer tracking
+- Browser and device analytics
+- QR code generation
+- Link expiration
+- Rate limiting
+- Redis caching
+- Docker support
+- Automated testing
+- Production deployment
 
 ---
 
 # Document Revision History
 
-| Version | Date      | Description             |
-| ------- | --------- | ----------------------- |
-| 1.0.0   | July 2026 | Initial Project Roadmap |
+| Version | Date | Description |
+|---|---|---|
+| 1.0.0 | July 2026 | Initial project roadmap |
+| 1.1.0 | August 2026 | Updated roadmap to reflect completed implementation, testing, and GitHub publication |
 
 ---
